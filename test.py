@@ -14,22 +14,23 @@ def creer_tab():
     duree integer
     );
 
-    create table if not exists salle (
-    id_salle integer primary key autoincrement,
-    nom_salle text not null,
-    capacite integer,
-    type_projection text
+    create table if not exists client (
+    id_client integer primary key autoincrement,
+    nom_client text not null,
+    numero_telephone varchar,
+    email varchar,
     );
 
     create table if not exists reservation (
     id_res integer primary key autoincrement,
-    nom_cli text not null,
+    id_client text not null,
     id_film integer,
-    id_salle integer,
-    date_res text,
+    nom_salle integer,
+    type_de_projection varchar,
+    date_res varchar,
     prix real,
     foreign key (id_film) references film(id_film),
-    foreign key (id_salle) references salle(id_salle)
+    foreign key (id_client) references salle(id_client),
     );
     """)
 
